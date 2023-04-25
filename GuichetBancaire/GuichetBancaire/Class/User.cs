@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace GuichetBancaire
+namespace GuichetBancaire.Class
 {
     public class User
     {

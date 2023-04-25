@@ -2,30 +2,31 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace GuichetBancaire
+namespace GuichetBancaire.Class
 {
-    public class AccountCourant : Account
+    public class AccountEpargne : Account
     {
-		private int _decouvertAut;
+        private double _tauxInteret;
 
-		public int DecouvertAut
+        public double TauxInteret
         {
-			get { return _decouvertAut; }
-			set { _decouvertAut = value; }
-		} 
-		public AccountCourant(string idAccount, User userName, double solde, string typeAccount,int decouvertAut) : base(idAccount, userName, solde, typeAccount)
-		{
+            get { return _tauxInteret; }
+            set { _tauxInteret = value; }
+        }
+
+        public AccountEpargne(string idAccount, User userName, double solde, string typeAccount, double tauxInteret)
+        {
             this._idAccount = idAccount;
             this._userName = userName;
             this._solde = solde;
             this._typeAccount = typeAccount;
-            this._decouvertAut = decouvertAut;
+            this._tauxInteret = tauxInteret;
         }
 
         public override bool VerifTransaction()
         {
-            double transaction = 0;
-            if (Solde < transaction)
+            double transaction = 0; 
+            if(transaction > Solde / 2)
             {
                 return false;
             }
@@ -44,8 +45,9 @@ namespace GuichetBancaire
             }
             else
             {
-                return "L'argent à bien n'as pas été retirer de votre compte : Vous n'avez pas assez sur ce compte";
+                return "L'argent à bien n'as pas été retirer de votre compte : Vous n'avez pas retirer plus de la moitié en une fois sur ce compte";
             }
         }
+
     }
 }

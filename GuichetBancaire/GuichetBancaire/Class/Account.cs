@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace GuichetBancaire
+namespace GuichetBancaire.Class
 {
     public abstract class Account
     {
@@ -35,13 +35,7 @@ namespace GuichetBancaire
             set { _solde = value; }
         }
 
-        public Account(string idAccount, User userName, double solde, string typeAccount)
-        {
-            this._idAccount = idAccount;
-            this._userName = userName;
-            this._solde = solde;
-            this._typeAccount = typeAccount;
-        }
+        
 
         public String Crediter(int AddMoney)
         {
