@@ -4,7 +4,7 @@ using System.Text;
 
 namespace GuichetBancaire
 {
-    abstract class Account
+    public abstract class Account
     {
 		protected string _idAccount;
 		protected User _userName;
@@ -49,21 +49,26 @@ namespace GuichetBancaire
             return "L'argent à bien été ajouter sur votre compte : " + AddMoney + " €"; 
         }
 
-        public abstract string Debiter(int RetireMoney);
+        public abstract string Debiter(double RetireMoney);
+        public abstract bool VerifTransaction();
 
-        //public string Versement()
-        //{
 
-        //}
+        public string Versement(double RetireMoney)
+        {
+            if (this.VerifTransaction() == true)
+            {
+                _solde -= RetireMoney;
+                return "L'argent à bien été retirer de votre compte : " + RetireMoney + " €";
+            }
+            else
+            {
+                return "L'argent à bien n'as pas été retirer de votre compte : Vous n'avez pas assez sur ce compte";
+            }
+        }
 
-        //public abstract void VerifTransaction()
-        //{
-
-        //}
-
-        //public string CaractCompte()
-        //{
-
-        //}
+        public string CaractCompte()
+        {
+            return "votre numero de compte est : " + IdAccount + ". Vous avez un solde de : " + Solde + ". Ce compte est de type : " + TypeAccount;
+        }
     }
 }

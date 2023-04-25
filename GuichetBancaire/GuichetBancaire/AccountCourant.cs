@@ -4,7 +4,7 @@ using System.Text;
 
 namespace GuichetBancaire
 {
-    class AccountCourant : Account
+    public class AccountCourant : Account
     {
 		private int _decouvertAut;
 
@@ -22,9 +22,17 @@ namespace GuichetBancaire
             this._decouvertAut = decouvertAut;
         }
 
-        public bool VerifTransaction()
+        public override bool VerifTransaction()
         {
-
+            double transaction = 0;
+            if (Solde < transaction)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
         }
 
         public override string Debiter(double RetireMoney)
